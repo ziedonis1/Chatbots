@@ -20,6 +20,7 @@ public class Main {
             System.out.println("Prieks dzirdēt, " + user_name + ", jūsu pieteikums ir pieņemts");
         } else if (atbilde.equals("Nē")) {
             System.out.println("Piedāvājam jums iespēju pārdomāt. :)");
+            System.out.println("Vai pārdomājāt?");
         String atbilde2 = scan.nextLine();
         if (atbilde2.equals("Jā")) {
             System.out.println("Prieks dzirdēt, " + user_name + ", jūsu pieteikums ir pieņemts");
