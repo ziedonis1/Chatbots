@@ -1,2 +1,0 @@
-# Chatbots
-Vienkāršais chatbots
