@@ -1,0 +1,11 @@
+public class TimeBoom {
+    public static void main(String[] args) {
+
+        for (int laiks = 5; laiks > 0; laiks--) {
+            System.out.println("Time: " + laiks);
+            if (laiks == 1) {
+                System.out.println("BOOM!");
+            }
+        }
+    }
+}
