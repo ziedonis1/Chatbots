@@ -1,0 +1,22 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        Random rnd = new Random();
+        int randomSkaitlis = rnd.nextInt(10);
+
+        System.out.println("Uzmini šo skaitli!");
+
+        int skaitlis = scan.nextInt();
+
+        if (skaitlis == randomSkaitlis) {
+            System.out.println("Apsveicu!");
+        } else {
+            System.out.println("Varbut citreiz!");
+        }
+    }
+}
+
