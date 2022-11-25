@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class LoginSim {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter username:");
+        String userName = scan.nextLine();
+
+        System.out.println("Enter password:");
+        String password = scan.nextLine();
+
+
+        switch (userName) {
+            case "Marts":
+                if("eldesa".equals(password)) {
+                    System.out.println("Welcome Marts!");
+                    break;
+                }
+
+            case "Dita":
+                if("kartupelis".equals(password)) {
+                    System.out.println("Welcome Dita!");
+                    break;
+                }
+            default:{
+                System.out.println("Wrong username or password!");
+            }
+        }
+    }
+}
