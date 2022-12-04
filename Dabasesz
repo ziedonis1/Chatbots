@@ -1,0 +1,141 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        Scanner scan = new Scanner(System.in);
+        DBlogic db = new DBlogic();
+
+
+        System.out.println("Kuru darbību vēlies veikt? (I - ievadīt datus, U - mainīt, D - dzēst, R - lasīt visus)");
+        String usr = scan.nextLine();
+
+        switch (usr) {
+            case "I":
+                //insert
+                System.out.println("Ievadi vārdu, kuru vēlies saglabāt: ");
+                String name = scan.nextLine();
+                db.insert(name);
+                break;
+
+            case "R":
+                //read
+                db.read();
+                break;
+
+            case "U":
+                //update
+                System.out.println("Kuru ierakstu vēlies mainīt?: ");
+                int change = scan.nextInt();
+                System.out.println("Ieraksti jauno vārdu: ");
+                String new_name = scan.next();
+
+                db.update(new_name, change);
+                break;
+
+            case "D":
+                //delete
+                System.out.println("Kuru ierakstu vēlies dzēst?: ");
+                int row = scan.nextInt();
+                db.delete(row);
+                break;
+
+            default:
+                System.out.println("Nav šādu komandu!");
+
+        }
+
+    }
+
+}
+
+
+
+
+-------------------------------------------------------------
+
+import java.sql.*;
+
+public class DBlogic {
+
+    String DB = "jdbc:mysql://localhost:3306/2311";
+    String user = "root";
+    String pass = "Ziedonis1";
+
+    //insert
+    public void insert(String name) {
+
+        try {
+            Connection conn = DriverManager.getConnection(DB, user, pass);
+            Statement stmt = conn.createStatement();
+
+            String sql = "insert into users (name) values ('"+ name + "')";
+
+            stmt.executeUpdate(sql);
+
+            System.out.println("Dati ievaditi");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //update
+    public void update(String name, int id) {
+        try {
+            Connection conn = DriverManager.getConnection(DB, user, pass);
+            Statement stmt = conn.createStatement();
+
+            String sql = "Update users SET name = '"+ name +"' WHERE id =" + id;
+
+            stmt.executeUpdate(sql);
+
+            System.out.println("Dati atjaunoti");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //delete
+    public void delete(int id) {
+
+        try {
+            Connection conn = DriverManager.getConnection(DB, user, pass);
+            Statement stmt = conn.createStatement();
+
+            String sql = "Delete From users WHERE id =" + id;
+
+            stmt.executeUpdate(sql);
+
+            System.out.println("Dati izdzēsti");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //select/read
+    public void read() {
+        try {
+            Connection conn = DriverManager.getConnection(DB, user, pass);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from users");
+
+            while (rs.next()) {
+                System.out.println("id: "+ rs.getInt("id"));
+                System.out.println("id: "+ rs.getString("name"));
+                System.out.println("");
+
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
