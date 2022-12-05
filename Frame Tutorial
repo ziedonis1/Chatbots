@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class FrameTutorial {
+    public static void main(String[] args) {
+
+        //uztaisa frame kaa taadu
+        JFrame frame = new JFrame();
+        //dod nosaukumu
+        frame.setTitle("Majaslapa");
+        //atlauj mainit izmeru
+        frame.setResizable(true);
+        //lauj aizvert
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //izmers
+        frame.setSize(800, 600);
+        //so vajag lai frame paraditos
+        frame.setVisible(true);
+
+        //panela uztaisisana, kurs grupee visu kopaa?
+        JPanel panel = new JPanel();
+        frame.add(panel);
+        frame.setVisible(true);
+        panel.setLayout(null);
+
+        //email laucins
+        JLabel emailLabel = new JLabel("Email");
+        emailLabel.setBounds(20, 10, 100, 25);
+        panel.add(emailLabel);
+
+        JTextField emailField = new JTextField();
+        emailField.setBounds(20, 40, 100, 25);
+        panel.add(emailField);
+
+        //password laucins
+        JLabel passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(20, 80, 100, 25);
+        panel.add(passwordLabel);
+
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(20, 120, 100, 25);
+        panel.add(passwordField);
+
+        //poga
+        JButton register = new JButton("Register");
+        register.setBounds(20, 190, 100, 25);
+        panel.add(register);
+
+        register.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                JLabel display = new JLabel();
+                display.setBounds(20,250,500,90);
+                panel.add(display);
+                display.setText("Reģistrācija pabeigta");
+
+            }
+        });
+
+    }
+}
